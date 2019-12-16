@@ -1,0 +1,49 @@
+input[type="text"] {
+  width: 80px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  margin: 6px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: rgb(167, 167, 167);
+  box-shadow: 0 0 8px 0 rgb(158, 158, 158);
+}
+label {
+  font-size: small;
+}
+.Height {
+  float: left;
+  margin-right: 20px;
+}
+
+.Width {
+  float: left;
+  margin-right: 20px;
+}
+.Mines {
+  float: left;
+}
+
+input,
+label {
+  display: block;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+button {
+  padding: 8px 100px;
+  margin: 8px 0px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+}
+input:hover {
+  opacity: 0.6;
+}

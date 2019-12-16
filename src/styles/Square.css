@@ -1,0 +1,48 @@
+.square {
+  color: rgb(192, 192, 192);
+  font-size: small;
+  cursor: pointer;
+  background-color: rgb(192, 192, 192);
+  border: 1px solid rgb(184, 184, 184);
+  margin: 2px;
+  padding: 1px;
+  width: 28px;
+  height: 28px;
+}
+
+.square-exposed {
+  font-weight: bold;
+  cursor: not-allowed;
+  background-color: rgb(236, 236, 236);
+  color: rgb(236, 236, 236);
+  transition: background-color linear 0.3s;
+}
+
+.square-exposed-number {
+  color: #fff;
+  cursor: not-allowed;
+  font-weight: bold;
+  background-color: rgb(158, 158, 158);
+  transition: background-color linear 0.3s;
+}
+
+.square-boom {
+  font-size: x-small;
+  padding: 5px;
+  cursor: not-allowed;
+  background-color: rgb(197, 150, 150);
+  animation: 0.7s infinite alternate pulse;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.square-flagged {
+  font-size: small;
+  color: rgb(255, 0, 0);
+  padding-bottom: 3.2px;
+}
+
+.square:focus {
+  outline: none;
+}
