@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import Toolbar from "./components/Toolbar";
 import Board from "./components/Board";
 import "./styles/Minesweeper.css";
-import { initialBoardSettings } from "./globConstants/globConstants";
+import {
+  initialBoardSettings,
+  errorMessages,
+  maxBoardDimension
+} from "./globConstants/globConstants";
 
 class Minesweeper extends Component {
   state = {
@@ -14,12 +18,18 @@ class Minesweeper extends Component {
 
   handleBoardSettingsChange = (height, width, mines) => {
     let newGameNum = this.state.gameNum + 1;
-    if (height <= 0 || width <= 0 || mines < 0 || width > 300 || height > 300) {
-      alert("Invalid input! Width and height should be in range [1-300]");
+    if (
+      height <= 0 ||
+      width <= 0 ||
+      mines < 0 ||
+      width > maxBoardDimension ||
+      height > maxBoardDimension
+    ) {
+      alert(errorMessages.INVALID_DIMENSION);
       return null;
     }
     if (mines > height * width || mines === 0) {
-      alert("Number of mines should be in range [1 - board dimension]");
+      alert(errorMessages.INVALID_MINES);
       return null;
     }
     this.setState({

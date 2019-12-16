@@ -20,3 +20,10 @@
   margin: 2px;
   padding: 2px;
 }
+
+.board {
+  white-space: nowrap;
+  width: 98vw;
+  overflow-x: scroll;
+  text-align: center;
+}

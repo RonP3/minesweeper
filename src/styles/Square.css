@@ -8,6 +8,7 @@
   padding: 1px;
   width: 28px;
   height: 28px;
+  display: inline-block;
 }
 
 .square-exposed {

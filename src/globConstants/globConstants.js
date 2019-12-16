@@ -22,5 +22,12 @@ export const initialBoardSettings = {
   GAMENUM: 0
 };
 
+export const errorMessages = {
+  INVALID_DIMENSION:
+    "Invalid input! Width and height should be in range [1-300]",
+  INVALID_MINES: "Number of mines should be in range [1 - board dimension]"
+};
+
+export const maxBoardDimension = 300;
 export const noFlags = "No more flags!";
 export const remainingFlags = 0;
