@@ -44,42 +44,20 @@ class Toolbar extends Component {
       <div>
         <div className="Height">
           <label>Height:</label>
-          <input
-            placeholder="Height"
-            key="height"
-            onChange={this.handleHeightChange}
-            type="text"
-            value={this.state.heightInput}
-          ></input>
+          <input placeholder="Height" key="height" onChange={this.handleHeightChange} type="text" value={this.state.heightInput}></input>
         </div>
         <div className="Width">
           <label>Width:</label>
           <input
-            key="width"
-            onChange={this.handlewidthChange}
-            type="text"
-            value={this.state.widthInput}
-          ></input>
+            key="width" onChange={this.handlewidthChange} type="text" value={this.state.widthInput}></input>
         </div>
         <div className="Mines">
           <label>Mines:</label>
           <input
-            key="mines"
-            onChange={this.handleMinesChange}
-            type="text"
-            value={this.state.mineInput}
-          ></input>
+            key="mines" onChange={this.handleMinesChange} type="text" value={this.state.mineInput}></input>
         </div>
         <div className="newGame">
-          <button
-            onClick={() =>
-              this.props.onBoardSettingsChange(
-                this.state.heightInput,
-                this.state.widthInput,
-                this.state.mineInput
-              )
-            }
-          >
+          <button onClick={() => this.props.onBoardSettingsChange(this.state.heightInput, this.state.widthInput, this.state.mineInput)}>
             New Game
           </button>
         </div>

@@ -23,8 +23,7 @@ export const initialBoardSettings = {
 };
 
 export const errorMessages = {
-  INVALID_DIMENSION:
-    "Invalid input! Width and height should be in range [1-300]",
+  INVALID_DIMENSION: "Invalid input! Width and height should be in range [1-300]",
   INVALID_MINES: "Number of mines should be in range [1 - board dimension]"
 };
 

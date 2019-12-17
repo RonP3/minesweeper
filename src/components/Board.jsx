@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import Square from "./Square";
 import "../styles/Board.css";
-import {
-  gameStatuses,
-  noFlags,
-  remainingFlags,
-  messages
-} from "../globConstants/globConstants";
+import { gameStatuses, noFlags, remainingFlags, messages } from "../globConstants/globConstants";
 
 class Board extends Component {
   state = {
@@ -58,30 +53,22 @@ class Board extends Component {
 
   getSquareNeighbors = (row, col, boardData, height, width) => {
     const squareNeighbors = [];
-    if (row - 1 >= 0) {
+    if (row - 1 >= 0) 
       squareNeighbors.push(boardData[row - 1][col]);
-    }
-    if (row + 1 < height) {
+    if (row + 1 < height)
       squareNeighbors.push(boardData[row + 1][col]);
-    }
-    if (col + 1 < width) {
+    if (col + 1 < width)
       squareNeighbors.push(boardData[row][col + 1]);
-    }
-    if (col - 1 >= 0) {
+    if (col - 1 >= 0)
       squareNeighbors.push(boardData[row][col - 1]);
-    }
-    if (row - 1 >= 0 && col + 1 < width) {
+    if (row - 1 >= 0 && col + 1 < width)
       squareNeighbors.push(boardData[row - 1][col + 1]);
-    }
-    if (row - 1 >= 0 && col - 1 >= 0) {
+    if (row - 1 >= 0 && col - 1 >= 0)
       squareNeighbors.push(boardData[row - 1][col - 1]);
-    }
-    if (row + 1 < height && col + 1 < width) {
+    if (row + 1 < height && col + 1 < width)
       squareNeighbors.push(boardData[row + 1][col + 1]);
-    }
-    if (row + 1 < height && col - 1 >= 0) {
+    if (row + 1 < height && col - 1 >= 0)
       squareNeighbors.push(boardData[row + 1][col - 1]);
-    }
     return squareNeighbors;
   };
 
@@ -91,17 +78,10 @@ class Board extends Component {
         const squareData = boardData[row][col];
         if (squareData.isMine === false) {
           let mineNum = 0;
-          const squareNeighbors = this.getSquareNeighbors(
-            row,
-            col,
-            boardData,
-            height,
-            width
-          );
+          const squareNeighbors = this.getSquareNeighbors(row, col, boardData, height, width);
           squareNeighbors.forEach(neighbor => {
-            if (neighbor.isMine) {
+            if (neighbor.isMine)
               mineNum++;
-            }
           });
           boardData[row][col].minesNeighbors = mineNum;
         }
@@ -118,26 +98,13 @@ class Board extends Component {
         square.isExposed = true;
       });
     });
-    this.setState({
-      boardData: newBoardData,
-      remainingFlags: newRemainingFlags
-    });
+    this.setState({ boardData: newBoardData, remainingFlags: newRemainingFlags });
   };
 
   exposeEmptySquare = (row, col, boardData) => {
-    const squareNeighbors = this.getSquareNeighbors(
-      row,
-      col,
-      boardData,
-      this.props.height,
-      this.props.width
-    );
+    const squareNeighbors = this.getSquareNeighbors(row, col, boardData, this.props.height, this.props.width);
     squareNeighbors.forEach(square => {
-      if (
-        !square.isExposed &&
-        (square.minesNeighbors === 0 || !square.isMine) &&
-        !square.isFlagged
-      ) {
+      if (!square.isExposed && (square.minesNeighbors === 0 || !square.isMine) && !square.isFlagged) {
         boardData[square.rowNum][square.colNum].isExposed = true;
         if (square.minesNeighbors === 0)
           this.exposeEmptySquare(square.rowNum, square.colNum, boardData);
@@ -168,13 +135,8 @@ class Board extends Component {
 
   handleLeftClick = (row, col) => {
     const { boardData, remainingFlags, gameStatus } = this.state;
-    if (
-      boardData[row][col].isFlagged ||
-      boardData[row][col].isExposed ||
-      gameStatus !== gameStatuses.INPROGRESS
-    ) {
+    if (boardData[row][col].isFlagged || boardData[row][col].isExposed || gameStatus !== gameStatuses.INPROGRESS)
       return null;
-    }
 
     if (boardData[row][col].isMine) {
       this.exposeAllSquares(remainingFlags);
@@ -258,18 +220,9 @@ class Board extends Component {
   componentDidUpdate = prevProps => {
     // updateing board settings when props are changing
     const { height, width, mines, gameNum } = this.props;
-    if (
-      height !== prevProps.height ||
-      width !== prevProps.width ||
-      mines !== prevProps.mines ||
-      gameNum !== prevProps.gameNum
-    ) {
+    if (height !== prevProps.height || width !== prevProps.width || mines !== prevProps.mines || gameNum !== prevProps.gameNum) {
       const newBoardData = this.initializeBoardData(height, width, mines);
-      this.setState({
-        boardData: newBoardData,
-        remainingFlags: mines,
-        gameStatus: gameStatuses.INPROGRESS
-      });
+      this.setState({ boardData: newBoardData, remainingFlags: mines, gameStatus: gameStatuses.INPROGRESS });
     }
   };
 
@@ -283,7 +236,6 @@ class Board extends Component {
         <span className="status">
           Game status: {this.setGameStatusMessage(gameStatus)}{" "}
         </span>
-
         {this.renderBoard(boardData)}
       </React.Fragment>
     );

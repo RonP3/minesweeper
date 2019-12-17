@@ -7,7 +7,7 @@ class Square extends Component {
     const { square } = this.props;
     if (!square.isExposed) {
       if (square.isFlagged) {
-        return [icons.FLAG, "square square-flagged"]; //
+        return [icons.FLAG, "square square-flagged"];
       } else {
         return [".", "square"];
       }
@@ -21,10 +21,7 @@ class Square extends Component {
     const { square, onSquareClick } = this.props;
     const [squareValue, squareClassName] = this.getSquareValueAndClass();
     return (
-      <button
-        className={squareClassName}
-        onClick={e => onSquareClick(e, square.rowNum, square.colNum)}
-      >
+      <button className={squareClassName} onClick={e => onSquareClick(e, square.rowNum, square.colNum)}>
         {squareValue}
       </button>
     );
