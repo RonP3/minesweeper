@@ -1,12 +1,13 @@
-# React Minesweeper
+
+# 💥 React Minesweeper
 A minesweeper game, made in React.
 
 Demo: https://ronp3.github.io/minesweeper/
 
 ### Game Instructions
 1. Shift button + Left mouse click puts or removes a flag on the cell.
-2. Click on the cell reveals the value underneath it - if it is mine, you lose. 💣
-3. If all mines are flagged correctly you win! 🚩
+2. Click on the cell reveals the value underneath it - if it is mine, you lose. The game status will be - Lose! 🔥
+3. If all mines are flagged correctly you win! The game status will be- Win! 🚩
 
 ### Installing
 ```
