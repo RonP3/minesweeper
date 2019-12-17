@@ -101,15 +101,34 @@ class Board extends Component {
     this.setState({ boardData: newBoardData, remainingFlags: newRemainingFlags });
   };
 
+  // Recursive implementation
+  // exposeEmptySquare = (row, col, boardData) => {
+  //   const squareNeighbors = this.getSquareNeighbors(row, col, boardData, this.props.height, this.props.width);
+  //   squareNeighbors.forEach(square => {
+  //     if (!square.isExposed && (square.minesNeighbors === 0 || !square.isMine) && !square.isFlagged) {
+  //       boardData[square.rowNum][square.colNum].isExposed = true;
+  //       if (square.minesNeighbors === 0)
+  //         this.exposeEmptySquare(square.rowNum, square.colNum, boardData);
+  //     }
+  //   });
+  //   return boardData;
+  // };
+
+  // Iterative implementation
   exposeEmptySquare = (row, col, boardData) => {
-    const squareNeighbors = this.getSquareNeighbors(row, col, boardData, this.props.height, this.props.width);
-    squareNeighbors.forEach(square => {
+    let callStack = [];
+    callStack.push([row, col]);
+    while (callStack.length > 0) {
+      let square = callStack.pop();
+      const squareNeighbors = this.getSquareNeighbors(square[0], square[1], boardData, this.props.height, this.props.width);
+      squareNeighbors.forEach(square => {
       if (!square.isExposed && (square.minesNeighbors === 0 || !square.isMine) && !square.isFlagged) {
         boardData[square.rowNum][square.colNum].isExposed = true;
         if (square.minesNeighbors === 0)
-          this.exposeEmptySquare(square.rowNum, square.colNum, boardData);
+          callStack.push([square.rowNum, square.colNum]);
       }
     });
+    }
     return boardData;
   };
 
