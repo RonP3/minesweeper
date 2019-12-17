@@ -122,12 +122,12 @@ class Board extends Component {
       let square = callStack.pop();
       const squareNeighbors = this.getSquareNeighbors(square[0], square[1], boardData, this.props.height, this.props.width);
       squareNeighbors.forEach(square => {
-      if (!square.isExposed && (square.minesNeighbors === 0 || !square.isMine) && !square.isFlagged) {
-        boardData[square.rowNum][square.colNum].isExposed = true;
-        if (square.minesNeighbors === 0)
-          callStack.push([square.rowNum, square.colNum]);
-      }
-    });
+        if (!square.isExposed && (square.minesNeighbors === 0 || !square.isMine) && !square.isFlagged) {
+          boardData[square.rowNum][square.colNum].isExposed = true;
+          if (square.minesNeighbors === 0)
+            callStack.push([square.rowNum, square.colNum]);
+        }
+      });
     }
     return boardData;
   };
